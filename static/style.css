@@ -1,0 +1,249 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #d6dee7;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.form-wrap {
+  width: 100%;
+  max-width: 580px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+/* Header */
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.header-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #e6f1fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon i {
+  font-size: 22px;
+  color: #185fa5;
+}
+
+.header-text h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 2px;
+}
+
+.header-text p {
+  font-size: 13px;
+  color: #718096;
+}
+
+/* Section labels */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a0aec0;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin: 1.25rem 0 0.6rem;
+}
+
+/* Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* Field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1a202c;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #378add;
+  box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.12);
+}
+
+/* Toggle buttons */
+.toggle-row {
+  display: flex;
+  gap: 8px;
+}
+
+.toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #718096;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.toggle-btn input[type="radio"] {
+  display: none;
+}
+
+.toggle-btn:has(input:checked) {
+  background: #e6f1fb;
+  border-color: #378add;
+  color: #185fa5;
+  font-weight: 600;
+}
+
+.toggle-btn i {
+  font-size: 15px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: #edf2f7;
+  margin: 1.25rem 0;
+}
+
+/* Buttons */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.75rem;
+}
+
+.btn-predict {
+  flex: 1;
+  padding: 10px 16px;
+  background: #185fa5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: background 0.15s;
+}
+
+.btn-predict:hover { background: #0c447c; }
+.btn-predict:active { background: #042c53; }
+
+.btn-reset {
+  padding: 10px 20px;
+  background: #f7fafc;
+  color: #718096;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-reset:hover { background: #edf2f7; }
+.btn-reset:active { background: #e2e8f0; }
+
+/* Result box */
+.result-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.25rem;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.result-box i {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.result-success {
+  background: #eaf3de;
+  border: 1px solid #639922;
+  color: #3b6d11;
+}
+
+.result-danger {
+  background: #fcebeb;
+  border: 1px solid #e24b4a;
+  color: #a32d2d;
+}
+
+/* Badge */
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.badge-success { background: #c0dd97; color: #3b6d11; }
+.badge-danger  { background: #f7c1c1; color: #a32d2d; }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr 1fr; }
+  .card { padding: 1.25rem; }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Insurance Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="form-wrap">
+  <div class="card">
+
+    <div class="form-header">
+      <div class="header-icon"><i class="ti ti-car"></i></div>
+      <div class="header-text">
+        <h2>Vehicle insurance prediction</h2>
+        <p>Fill in customer details to predict insurance interest</p>
+      </div>
+    </div>
+
+    <form action="/predict" method="post">
+
+      <p class="section-label">Personal info</p>
+      <div class="grid-2">
+        <div class="field">
+          <label>Gender</label>
+          <select name="Gender" required>
+            <option value="">Select</option>
+            <option value="Male" {% if Gender == "Male" %}selected{% endif %}>Male</option>
+            <option value="Female" {% if Gender == "Female" %}selected{% endif %}>Female</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Age</label>
+          <input type="number" name="Age" value="{{ Age or '' }}" placeholder="e.g. 35" required>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:10px;">
+        <label>Driving license</label>
+        <div class="toggle-row">
+          <label class="toggle-btn">
+            <input type="radio" name="Driving_License" value="1" {% if Driving_License == '1' %}checked{% endif %} required>
+            <i class="ti ti-check"></i> Yes
+          </label>
+          <label class="toggle-btn">
+            <input type="radio" name="Driving_License" value="0" {% if Driving_License == '0' %}checked{% endif %}>
+            <i class="ti ti-x"></i> No
+          </label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="section-label">Vehicle details</p>
+      <div class="grid-3">
+        <div class="field">
+          <label>Vehicle age</label>
+          <select name="Vehicle_Age" required>
+            <option value="">Select</option>
+            <option value="< 1 Year" {% if Vehicle_Age == "< 1 Year" %}selected{% endif %}>&lt; 1 year</option>
+            <option value="1-2 Year" {% if Vehicle_Age == "1-2 Year" %}selected{% endif %}>1–2 years</option>
+            <option value="> 2 Years" {% if Vehicle_Age == "> 2 Years" %}selected{% endif %}>&gt; 2 years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Vehicle damage</label>
+          <select name="Vehicle_Damage" required>
+            <option value="">Select</option>
+            <option value="Yes" {% if Vehicle_Damage == "Yes" %}selected{% endif %}>Yes</option>
+            <option value="No" {% if Vehicle_Damage == "No" %}selected{% endif %}>No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Region code</label>
+          <input type="number" step="any" name="Region_Code" value="{{ Region_Code or '' }}" placeholder="e.g. 28" required>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:10px;">
+        <label>Previously insured</label>
+        <div class="toggle-row">
+          <label class="toggle-btn">
+            <input type="radio" name="Previously_Insured" value="1" {% if Previously_Insured == '1' %}checked{% endif %} required>
+            <i class="ti ti-check"></i> Yes
+          </label>
+          <label class="toggle-btn">
+            <input type="radio" name="Previously_Insured" value="0" {% if Previously_Insured == '0' %}checked{% endif %}>
+            <i class="ti ti-x"></i> No
+          </label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="section-label">Policy info</p>
+      <div class="grid-3">
+        <div class="field">
+          <label>Annual premium</label>
+          <input type="number" step="any" name="Annual_Premium" value="{{ Annual_Premium or '' }}" placeholder="Amount" required>
+        </div>
+        <div class="field">
+          <label>Sales channel</label>
+          <input type="number" step="any" name="Policy_Sales_Channel" value="{{ Policy_Sales_Channel or '' }}" placeholder="e.g. 152" required>
+        </div>
+        <div class="field">
+          <label>Vintage (days)</label>
+          <input type="number" name="Vintage" value="{{ Vintage or '' }}" placeholder="e.g. 180" required>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn-predict">
+          <i class="ti ti-sparkles"></i> Predict interest
+        </button>
+        <button type="button" class="btn-reset" onclick="window.location.href='/'">Reset</button>
+      </div>
+
+    </form>
+
+    {% if prediction_text %}
+    <div class="result-box {% if prediction_text == 'Customer Interested' %}result-success{% else %}result-danger{% endif %}">
+      {% if prediction_text == 'Customer Interested' %}
+        <i class="ti ti-circle-check"></i>
+        Customer is interested in vehicle insurance
+        <span class="badge badge-success">Interested</span>
+      {% else %}
+        <i class="ti ti-circle-x"></i>
+        Customer is not interested in vehicle insurance
+        <span class="badge badge-danger">Not interested</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+</body>
+</html>
